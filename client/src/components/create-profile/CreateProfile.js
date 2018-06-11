@@ -1,31 +1,31 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import propTypes from "prop-types";
-import TextFieldGroup from "../common/TextFieldGroup";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
-import InputGroup from "../common/InputGroup";
-import SelectListGroup from "../common/SelectListGroup";
-import { createProfile } from "../../actions/profileActions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import TextFieldGroup from '../common/TextFieldGroup';
+import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
+import InputGroup from '../common/InputGroup';
+import SelectListGroup from '../common/SelectListGroup';
+import { createProfile } from '../../actions/profileActions';
 
 class CreateProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       displaySocialInputs: false,
-      handle: "",
-      company: "",
-      website: "",
-      location: "",
-      status: "",
-      skills: "",
-      githubusername: "",
-      bio: "",
-      twitter: "",
-      facebook: "",
-      linkedin: "",
-      youtube: "",
-      instagram: "",
+      handle: '',
+      company: '',
+      website: '',
+      location: '',
+      status: '',
+      skills: '',
+      githubusername: '',
+      bio: '',
+      twitter: '',
+      facebook: '',
+      linkedin: '',
+      youtube: '',
+      instagram: '',
       errors: {}
     };
 
@@ -37,10 +37,6 @@ class CreateProfile extends Component {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
-  }
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
   }
 
   onSubmit(e) {
@@ -63,6 +59,10 @@ class CreateProfile extends Component {
     };
 
     this.props.createProfile(profileData, this.props.history);
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
@@ -120,28 +120,30 @@ class CreateProfile extends Component {
         </div>
       );
     }
+
     // Select options for status
     const options = [
-      { label: "* Select Professional Status", value: 0 },
-      { label: "Developer", value: "Developer" },
-      { label: "Junior Developer", value: "Junior Developer" },
-      { label: "Senior Developer", value: "Senior Developer" },
-      { label: "Manager", value: "Manager" },
-      { label: "Student or Learning", value: "Student or Learning" },
-      { label: "Instructor or Teacher", value: "Instructor or Teacher" },
-      { label: "Intern", value: "Intern" },
-      { label: "Other", value: "Other" }
+      { label: '* Select Professional Status', value: 0 },
+      { label: 'Developer', value: 'Developer' },
+      { label: 'Junior Developer', value: 'Junior Developer' },
+      { label: 'Senior Developer', value: 'Senior Developer' },
+      { label: 'Manager', value: 'Manager' },
+      { label: 'Student or Learning', value: 'Student or Learning' },
+      { label: 'Instructor or Teacher', value: 'Instructor or Teacher' },
+      { label: 'Intern', value: 'Intern' },
+      { label: 'Other', value: 'Other' }
     ];
+
     return (
       <div className="create-profile">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Create your profile</h1>
+              <h1 className="display-4 text-center">Create Your Profile</h1>
               <p className="lead text-center">
                 Let's get some information to make your profile stand out
               </p>
-              <small className="d-block pb-3">*= required fields</small>
+              <small className="d-block pb-3">* = required fields</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="* Profile Handle"
@@ -190,7 +192,8 @@ class CreateProfile extends Component {
                   value={this.state.skills}
                   onChange={this.onChange}
                   error={errors.skills}
-                  info="Please use comma separated values (eg.HTML,CSS,JavaScript,PHP)"
+                  info="Please use comma separated values (eg.
+                    HTML,CSS,JavaScript,PHP"
                 />
                 <TextFieldGroup
                   placeholder="Github Username"
@@ -208,6 +211,7 @@ class CreateProfile extends Component {
                   error={errors.bio}
                   info="Tell us a little about yourself"
                 />
+
                 <div className="mb-3">
                   <button
                     type="button"
@@ -218,7 +222,7 @@ class CreateProfile extends Component {
                     }}
                     className="btn btn-light"
                   >
-                    Add social network links
+                    Add Social Network Links
                   </button>
                   <span className="text-muted">Optional</span>
                 </div>
@@ -236,9 +240,10 @@ class CreateProfile extends Component {
     );
   }
 }
+
 CreateProfile.propTypes = {
-  profile: propTypes.object.isRequired,
-  error: propTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

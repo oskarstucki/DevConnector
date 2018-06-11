@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import proptypes from "prop-types";
-import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
-import { clearCurrentProfile } from "../../actions/profileActions";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/authActions';
+import { clearCurrentProfile } from '../../actions/profileActions';
 
 class Navbar extends Component {
   onLogoutClick(e) {
@@ -18,19 +18,29 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
+          <Link className="nav-link" to="/feed">
+            Post Feed
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link" to="/dashboard">
             Dashboard
           </Link>
         </li>
         <li className="nav-item">
-          <a onClick={this.onLogoutClick.bind(this)} className="nav-link">
+          <a
+            href=""
+            onClick={this.onLogoutClick.bind(this)}
+            className="nav-link"
+          >
             <img
+              className="rounded-circle"
               src={user.avatar}
               alt={user.name}
-              style={{ width: "25px", marginRight: "5px" }}
+              style={{ width: '25px', marginRight: '5px' }}
               title="You must have a Gravatar connected to your email to display an image"
-            />
-            LogOut
+            />{' '}
+            Logout
           </a>
         </li>
       </ul>
@@ -70,7 +80,7 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
                 <Link className="nav-link" to="/profiles">
-                  {" "}
+                  {' '}
                   Developers
                 </Link>
               </li>
@@ -83,14 +93,15 @@ class Navbar extends Component {
   }
 }
 
-Navbar.proptypes = {
-  logoutUser: proptypes.func.isRequired,
-  auth: proptypes.object.isRequired
+Navbar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   auth: state.auth
 });
+
 export default connect(mapStateToProps, { logoutUser, clearCurrentProfile })(
   Navbar
 );

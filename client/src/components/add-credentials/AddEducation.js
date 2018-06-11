@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import TextFieldGroup from "../common/TextFieldGroup";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
-import { connect } from "react-redux";
-import propTypes from "prop-types";
-import { addEducation } from "../../actions/profileActions";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import TextFieldGroup from '../common/TextFieldGroup';
+import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addEducation } from '../../actions/profileActions';
 
 class AddEducation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      school: "",
-      degree: "",
-      fieldofstudy: "",
-      from: "",
-      to: "",
+      school: '',
+      degree: '',
+      fieldofstudy: '',
+      from: '',
+      to: '',
       current: false,
-      description: "",
+      description: '',
       errors: {},
       disabled: false
     };
@@ -66,15 +66,15 @@ class AddEducation extends Component {
       <div className="add-education">
         <div className="container">
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-md-8 m-auto">
               <Link to="/dashboard" className="btn btn-light">
-                Go back
+                Go Back
               </Link>
-              <h1 className="display-4 text-center">Add education</h1>
+              <h1 className="display-4 text-center">Add Education</h1>
               <p className="lead text-center">
-                Add any school, bootcamp etc. that you have attended
+                Add any school, bootcamp, etc that you have attended
               </p>
-              <small className="d-blcok pb-3">* = required fields</small>
+              <small className="d-block pb-3">* = required fields</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="* School"
@@ -91,7 +91,7 @@ class AddEducation extends Component {
                   error={errors.degree}
                 />
                 <TextFieldGroup
-                  placeholder="* Field of study"
+                  placeholder="* Field of Study"
                   name="fieldofstudy"
                   value={this.state.fieldofstudy}
                   onChange={this.onChange}
@@ -112,7 +112,7 @@ class AddEducation extends Component {
                   value={this.state.to}
                   onChange={this.onChange}
                   error={errors.to}
-                  disabled={this.state.disabled ? "disabled" : ""}
+                  disabled={this.state.disabled ? 'disabled' : ''}
                 />
                 <div className="form-check mb-4">
                   <input
@@ -125,7 +125,7 @@ class AddEducation extends Component {
                     id="current"
                   />
                   <label htmlFor="current" className="form-check-label">
-                    Current
+                    Current Job
                   </label>
                 </div>
                 <TextAreaFieldGroup
@@ -138,7 +138,7 @@ class AddEducation extends Component {
                 />
                 <input
                   type="submit"
-                  value="Add"
+                  value="Submit"
                   className="btn btn-info btn-block mt-4"
                 />
               </form>
@@ -151,9 +151,9 @@ class AddEducation extends Component {
 }
 
 AddEducation.propTypes = {
-  addEducation: propTypes.func.isRequired,
-  profile: propTypes.object.isRequired,
-  errors: propTypes.object.isRequired
+  addEducation: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import propTypes from "prop-types";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { registerUser } from "../../actions/authActions";
-import TextFieldGroup from "../common/TextFieldGroup";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions/authActions';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class Register extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      email: "",
-      password: "",
-      password2: "",
+      name: '',
+      email: '',
+      password: '',
+      password2: '',
       errors: {}
     };
 
@@ -22,7 +22,7 @@ class Register extends Component {
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push('/dashboard');
     }
   }
 
@@ -38,6 +38,7 @@ class Register extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+
     const newUser = {
       name: this.state.name,
       email: this.state.email,
@@ -75,8 +76,7 @@ class Register extends Component {
                   value={this.state.email}
                   onChange={this.onChange}
                   error={errors.email}
-                  info="This site uses Gravatar so if you want a profile image, use
-                  a Gravatar email"
+                  info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
                 />
                 <TextFieldGroup
                   placeholder="Password"
@@ -94,7 +94,6 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.password2}
                 />
-
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
@@ -104,10 +103,11 @@ class Register extends Component {
     );
   }
 }
+
 Register.propTypes = {
-  registerUser: propTypes.func.isRequired,
-  auth: propTypes.object.isRequired,
-  erros: propTypes.object.isRequired
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
